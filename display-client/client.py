@@ -1,3 +1,4 @@
+import os
 import time
 import unicornhat as unicorn
 import json
@@ -5,9 +6,13 @@ from socketIO_client import SocketIO, LoggingNamespace
 
 # The socker server Hostname
 DISPLAY_SERVER_HOST = 'localhost'
+if 'DISPLAY_SERVER_HOST' in os.environ:
+    DISPLAY_SERVER_HOST = os.environ['DISPLAY_SERVER_HOST']
+    
 # The socker server Port
 DISPLAY_SERVER_PORT = 80
-
+if 'DISPLAY_SERVER_PORT' in os.environ:
+    DISPLAY_SERVER_PORT = os.environ['DISPLAY_SERVER_PORT']
 
 unicorn.set_layout(unicorn.AUTO)
 unicorn.rotation(0)
