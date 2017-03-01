@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Unicorn Command</title>
+</head>
+
+<body>
+    <h1>Communication via socket.io</h1>
+    <div id="events">Last event</div>
+    
+    <p><a href="/editor.html">Visual Editor</a></p>
+    <p><input type="button" value="Previous" id="previous" /></p>
+    <p><input type="button" value="Next" id="next" /></p>
+
+
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        $(document).ready(function() {
+            var socket = io.connect('/');
+            socket.on('connect',function(){
+                $('#events').html("Connected, sending my name");
+                socket.emit('name', 'toto');
+            });
+            socket.on('error', function (data) {
+                console.log(data || 'error');
+            });
+            socket.on('connect_failed', function (data) {
+                $('#events').html("Connect failed : "+data);
+                console.log(data || 'connect_failed');
+            });
+            socket.on('message', function(message) {
+                $('#events').html(message);
+            });
+          
+            $('#previous').click(function() {
+                socket.emit('previous', '');
+            });
+            $('#next').click(function() {
+                socket.emit('next', '');
+            });
+        });
+    </script>
+</body>
+
+</html>

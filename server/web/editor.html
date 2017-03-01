@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Unicorn Display Editor</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style>
+        .line {
+            width: 400px;
+            height: 50px;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .block {
+            display: block;
+            float: left;
+            width: 44px;
+            height: 44px;
+            border: 1px solid #ccc;
+            padding: 3px;
+            margin-left: 5px;
+            border-radius:40px;
+        }
+        
+        .lcol {
+            height: 50px;
+        }
+        
+        #current {
+            height: 50px;
+        }
+    </style>
+
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header clearfix">
+            <h1>Editor</h1>
+        </div>
+        <div class="row" id="work">
+
+            <div class="col-lg-6" id="unicorn">
+
+            </div>
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-md-12" id="palette"></div>
+                    <div class="col-md-12" id="current">CURRENT</div>
+                    <div class="col-md-12" id="tools">tools
+                        <button id="send">Send</button>
+                        <button id="prev">Prev</button>
+                        <button id="next">Next</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="footer">
+            <div id="events"></div>
+        </div>
+    </div>
+    <script>
+        var unicorn = [];
+        var colors = [];
+        var current = 0;
+
+        var hexDigits = new Array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f");
+
+        function hex(x) {
+            return isNaN(x) ? "00" : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
+        }
+        //Function to convert rgb color to hex format
+        function rgb2hex(rgb) {
+            return "#" + hex(rgb[0]) + hex(rgb[1]) + hex(rgb[2]);
+        }
+
+        Object.defineProperty(Array.prototype, 'chunk', {
+            value: function(chunkSize) {
+                var R = [];
+                for (var i = 0; i < this.length; i += chunkSize)
+                    R.push(this.slice(i, i + chunkSize));
+                return R;
+            }
+        });
+
+        $(document).ready(function() {
+            $.getJSON("/res/colors.json", function(data) {
+                var palette = $('#palette');
+                $.each(data, function(key, val) {
+                    var color = rgb2hex(val);
+                    colors[key] = color;
+                    var lcol = $('<div class="lcol col-lg-3" style="background-color:' + color + '">' + key + '</div>');
+                    $.data(lcol, 'col', key);
+                    lcol.click(function() {
+                        current = $.data(lcol, 'col');
+                        $('#current').css('background-color', colors[current]);
+                    });
+                    palette.append(lcol);
+                });
+            });
+            $.getJSON("/res/start.json", function(data) {
+                unicorn = data['Payload'];
+                console.log(unicorn);
+                var n = 1;
+                for (i = 0; i <= 7; i++) {
+                    var line = $('<div class="line row"></div>');
+                    for (j = 0; j <= 7; j++) {
+                        var color = unicorn[i][j];
+                        var block = $('<span class="block" style="background-color:' + colors[color] + ';">' + ' ' + '</span>');
+                        block.data('col', color);
+                        block.click(function() {
+                            $.data(this, 'col', current);
+                            $(this).css('background-color', colors[current]);
+                        });
+                        line.append(block);
+                        n++;
+                    }
+                    $('#unicorn').append(line);
+                }
+            });
+
+            var socket = io.connect('/');
+            socket.on('connect', function() {
+                $('#events').html("Connected, sending my name");
+                socket.emit('name', 'Editor');
+            });
+            socket.on('error', function(data) {
+                console.log(data || 'error');
+            });
+            socket.on('connect_failed', function(data) {
+                $('#events').html("Connect failed : " + data);
+                console.log(data || 'connect_failed');
+            });
+            socket.on('message', function(message) {
+                $('#events').html(message);
+            });
+
+            $('#send').click(function() {
+                var temp = [];
+                $('#unicorn > div > .block').each(function() {
+                    temp.push(parseInt($.data(this, "col")));
+                });
+                unicorn = temp.chunk(8);
+                //console.log(unicorn);
+                var message = {
+					"Name":"all",
+					"Channel":"Editor",
+                    "Type": "StaticId",
+                    "Payload": unicorn
+                };
+                socket.emit('set', message);
+            });
+
+            $('#next').click(function() {
+                socket.emit('next', '');
+            });
+            $('#prev').click(function() {
+                socket.emit('previous', '');
+            });
+        });
+    </script>
+</body>
+
+</html>
