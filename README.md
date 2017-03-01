@@ -22,7 +22,8 @@ A real-time RGB LED display for the Raspberry Pi
 
 ## More info
 
-[Quick Demo Video](https://www.youtube.com/watch?v=Y8N3gI9rZXY)
+Blog post with a [Quick Demo Video](http://www.actuino.fr/raspi/minecraft-raspberry.html)
+(Please leave comments and questions over on our blog)
 
 Communication protocol, more demos and use cases will be posted soon.
 
