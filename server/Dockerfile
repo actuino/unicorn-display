@@ -4,10 +4,10 @@ WORKDIR /root/
 EXPOSE 80
 ENV UNICORN_SERVER_NAME ""
 
-COPY ../server.js ./
-COPY ../README.md ./
-COPY ../package.json ./
-COPY ../web web
+COPY server.js ./
+COPY README.md ./
+COPY package.json ./
+COPY web web
 
 RUN npm install
 
