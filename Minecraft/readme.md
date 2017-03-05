@@ -31,9 +31,9 @@ However, Docker and the pre-built images we provide for the Pi render the experi
 * Install the Docker engine on the Pi `curl -sSL get.docker.com |sh`
 * Pull the images
 ```
-docker pull actuino/actuino/unicorn-display-client:1
-docker pull actuino/actuino/unicorn-server:1
-docker pull actuino/actuino/cuberite-webhooks-armhf:1
+docker pull actuino/unicorn-display-client:1
+docker pull actuino/unicorn-server:1
+docker pull actuino/cuberite-webhooks-armhf:1
 ```
 * Run the 3 components
 ```
@@ -50,6 +50,8 @@ docker run -p 8080:8080 -p 25565:25565 actuino/cuberite-webhooks-armhf:1
 * Craft !
 
 ### Debug
+
+Note that if Cuberite is running on a Pi Zero, it may be a little choppy.
 
 * Point a brower to http://ip.of.the.pi/ and test the server/client flow.
 * Run the cuberite image with `-it` flags, or attach to the running docker container: you'll see the log output of the server.

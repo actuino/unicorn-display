@@ -1,5 +1,6 @@
 # unicorn-display
 A real-time RGB LED display for the Raspberry Pi.
+![](https://raw.githubusercontent.com/actuino/unicorn-display/master/res/unicorn-display-ok.png)
 
 ## Hardware
 
@@ -25,10 +26,10 @@ TODO
 
 ![](https://raw.githubusercontent.com/actuino/unicorn-display/master/res/unicorn-editor.png)
 
-## Flow for the Basic Demo, all on a Pi
+## Flow for the Basic Demo, all on a single Pi
 ![](https://raw.githubusercontent.com/actuino/unicorn-display/master/res/unicorn-flow1.png)
 
-## Flow with an online Node JS Hub
+## Another flow with an online Node JS Hub
 Several config are possible.
 
 ![](https://raw.githubusercontent.com/actuino/unicorn-display/master/res/unicorn-flow2.png)
