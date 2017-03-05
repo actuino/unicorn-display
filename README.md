@@ -1,5 +1,5 @@
 # unicorn-display
-A real-time RGB LED display for the Raspberry Pi
+A real-time RGB LED display for the Raspberry Pi.
 
 ## Hardware
 
@@ -9,9 +9,10 @@ A real-time RGB LED display for the Raspberry Pi
 ## Fast setup with Docker
 
 * Install Docker Engine : `curl -sSL get.docker.com |sh`
-* To dig more, check [5 things about Docker on Raspberry Pi](http://blog.alexellis.io/5-things-docker-rpi/) from Alex Ellis
 * See the Readmes of both [display-client](display-client/README.md) and [server](server/README.md). 
 * Install and run at least one of each (same Pi or not)
+
+* If you want to know more about Docker and the Pi, check [5 things about Docker on Raspberry Pi](http://blog.alexellis.io/5-things-docker-rpi/) from Alex Ellis
 
 ## Manual install
 
@@ -19,13 +20,34 @@ A real-time RGB LED display for the Raspberry Pi
 
 ## Test the thing
 * Open a browser and point it to the IP of the display server.
+* "Next" and "Previous" buttons will increment and decrement a counter
+* "Visual Editor link" opens an editor. Select a color, paint the grid, then click "Send" to update the Physical Display
+
+![](https://raw.githubusercontent.com/actuino/unicorn-display/master/res/unicorn-editor.png)
+
+## Flow for the Basic Demo, all on a Pi
+![](https://raw.githubusercontent.com/actuino/unicorn-display/master/res/unicorn-flow1.png)
+
+## Flow with an online Node JS Hub
+Several config are possible.
+
+![](https://raw.githubusercontent.com/actuino/unicorn-display/master/res/unicorn-flow2.png)
 
 ## More info
 
 Blog post with a [Quick Demo Video](http://www.actuino.fr/raspi/minecraft-raspberry.html)
 (Please leave comments and questions over on our blog)
 
-Communication protocol, more demos and use cases will be posted soon.
+If you want to replicate the full Demo with Minecraft, you'll need some more directions.
+See [Minecraft Demo how-to](Minecraft/readme.md).
+
+Some more [details about the stack](stack.md)
+
+## Roadmap
+
+* Post doc about communication protocol
+* add data providers code and demos
+* add real world use cases
 
 
 [@actuino](http://www.actuino.fr)
