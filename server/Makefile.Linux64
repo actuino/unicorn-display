@@ -3,7 +3,7 @@ VERSION ?= 1
 REPO = unicorn-server-linux64
 
 build:
-	docker build -t $(NS)/$(REPO):$(VERSION) .
+	docker build -t $(NS)/$(REPO):$(VERSION) -f Dockerfile.Linux64 .
 push:
 	docker push $(NS)/$(REPO):$(VERSION)
 
