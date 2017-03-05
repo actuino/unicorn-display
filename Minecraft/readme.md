@@ -12,6 +12,7 @@
 ## The Video
 
 Blog post with a [Quick Demo Video](http://www.actuino.fr/raspi/minecraft-raspberry.html)
+
 (Please leave comments and questions over on our blog)
 
 ## The communication flow
@@ -44,14 +45,14 @@ docker run -p 8080:8080 -p 25565:25565 actuino/cuberite-webhooks-armhf:1
 
 ### Enjoy
 
-* When running actuino/unicorn-display-client, a default scheme should appear on the physical display
+* When running actuino/unicorn-display-client, a default scheme should appear on the physical display.
 * Connect your Minecraft client to ip.of.the.pi:25565 
 * Craft !
 
 ### Debug
 
-* Point a brower to http://ip.of.the.pi/ and test the server/client flow
-* run the cuberite image with `-it` flags, or attach to the running docker container: you'll see the log output of the server.
+* Point a brower to http://ip.of.the.pi/ and test the server/client flow.
+* Run the cuberite image with `-it` flags, or attach to the running docker container: you'll see the log output of the server.
 * Head over to our [Actuino blog post for help](http://www.actuino.fr/raspi/minecraft-raspberry.html).
 
 ## Compatible Minecraft clients
@@ -72,4 +73,5 @@ You may try http://wiki.vg/Client_List for alternative open source clients (not 
 [Main Readme](../README.md)
 
 [@Actuino](https://twitter.com/actuino)
+
 Http://www.actuino.fr/
