@@ -1,5 +1,7 @@
 # Architecture and Protocol
 
+!! Preliminary doc !!
+
 ## Architecture
 
 Each display client may be autonomous, but tries to connect to a display server.
@@ -116,3 +118,10 @@ The body of the request should be a properly formatted json string of a display 
 ##### PHP
 
 
+
+
+[Main Readme](../README.md)
+
+[@Actuino](https://twitter.com/actuino)
+
+Http://www.actuino.fr/

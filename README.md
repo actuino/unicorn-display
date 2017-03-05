@@ -41,7 +41,7 @@ Blog post with a [Quick Demo Video](http://www.actuino.fr/raspi/minecraft-raspbe
 If you want to replicate the full Demo with Minecraft, you'll need some more directions.
 See [Minecraft Demo how-to](Minecraft/readme.md).
 
-Some more [details about the stack](stack.md)
+Some more [details about the stack](doc/stack.md)
 
 ## Roadmap
 

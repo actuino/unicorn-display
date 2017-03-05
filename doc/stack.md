@@ -29,4 +29,4 @@ Cuberite is an alternative Minecraft server written in C. It’s way more effici
 
 No hack here, just the standard Java client on a Desktop PC. All the control/command logic is server-side.
 
-[Main Readme](README.md)
+[Main Readme](../README.md)
