@@ -1,7 +1,5 @@
 # Command a physical LED display from within a Minecraft Virtual World
 
-!! DO NOT TRY YET !! Preliminary Version !!
-
 ## What you'll need
 
 * A Raspberry Pi Zero with Raspbian
@@ -32,12 +30,12 @@ However, Docker and the pre-built images we provide for the Pi render the experi
 * Pull the images
 ```
 docker pull actuino/unicorn-display-client:1
-docker pull actuino/unicorn-server:1
+docker pull actuino/unicorn-server-armhf:1
 docker pull actuino/cuberite-webhooks-armhf:1
 ```
 * Run the 3 components
 ```
-docker run -d -p 80:80 actuino/unicorn-display-server:1
+docker run -d -p 80:80 actuino/unicorn-server-armhf:1
 docker run --privileged -e DISPLAY_SERVER_HOST=192.168.7.3 actuino/unicorn-display-client:1
 docker run -p 8080:8080 -p 25565:25565 actuino/cuberite-webhooks-armhf:1
 ```
@@ -46,7 +44,9 @@ docker run -p 8080:8080 -p 25565:25565 actuino/cuberite-webhooks-armhf:1
 ### Enjoy
 
 * When running actuino/unicorn-display-client, a default scheme should appear on the physical display.
+* After launching the Cuberite server, wait about 10 seconds.
 * Connect your Minecraft client to ip.of.the.pi:25565 
+* If you need to change the IP of the Unicorn Server (192.168.7.3 by default), use that command from Minecraft : `setaddress ip.of.unicorn.client`
 * Craft !
 
 ### Debug

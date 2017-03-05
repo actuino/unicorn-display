@@ -1,6 +1,6 @@
 NS = actuino
 VERSION ?= 1
-REPO = unicorn-display-server
+REPO = unicorn-server-armhf
 
 build:
 	docker build -t $(NS)/$(REPO):$(VERSION) .
