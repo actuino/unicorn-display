@@ -36,7 +36,7 @@ docker pull actuino/cuberite-webhooks-armhf:1
 * Run the 3 components
 ```
 docker run -d -p 80:80 actuino/unicorn-server-armhf:1
-docker run --privileged -e DISPLAY_SERVER_HOST=192.168.7.3 actuino/unicorn-display-client:1
+docker run --privileged -d -e DISPLAY_SERVER_HOST=192.168.7.3 actuino/unicorn-display-client:1
 docker run -p 8080:8080 -p 25565:25565 actuino/cuberite-webhooks-armhf:1
 ```
 (replace 192.168.7.3 by the actual IP of the Pi)

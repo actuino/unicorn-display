@@ -5,7 +5,7 @@ The Python client, must run on the Pi with the Unicorn pHAT or HAT.
 
 `docker pull actuino/unicorn-display-client:1`
 
-`docker run --privileged -e DISPLAY_SERVER_HOST=192.168.7.3 actuino/unicorn-display-client:1`
+`docker run --privileged -d -e DISPLAY_SERVER_HOST=192.168.7.3 actuino/unicorn-display-client:1`
 
 (replace 192.168.7.3 by the IP of the display server, same Pi or not)
 
