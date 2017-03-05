@@ -43,11 +43,11 @@ docker run -p 8080:8080 -p 25565:25565 actuino/cuberite-webhooks-armhf:1
 
 ### Enjoy
 
-* When running actuino/unicorn-display-client, a default scheme should appear on the physical display.
+* When running actuino/unicorn-display-client, a default scheme should appear on the physical display within a few seconds.
 * After launching the Cuberite server, wait about 10 seconds.
-* Connect your Minecraft client to ip.of.the.pi:25565 
-* If you need to change the IP of the Unicorn Server (192.168.7.3 by default), use that command from Minecraft : `setaddress ip.of.unicorn.client`
-* Craft !
+* Connect your Minecraft client to `ip.of.the.pi:25565` 
+* If you need to change the IP of the Unicorn Server (192.168.7.3 by default), use that command from Minecraft : `/changeaddress ip.of.unicorn.server`
+* Craft ! You spawned on a platform above the world. Look around to find the Display artefact.
 
 ### Debug
 
