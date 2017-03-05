@@ -40,3 +40,5 @@ A default scheme is displayed. Send commands from the server to update.
 A default scheme is displayed. Send commands from the server to update.
 
 Some logs will be printed on the console.
+
+[Main Readme](../README.md)
