@@ -24,6 +24,7 @@ def set_my_pixels(payload):
     for y in range(height): #4 or 8
       r,g,b=payload[y][x]
       unicorn.set_pixel(x, y, r, g, b)
+  unicorn.show()
 
 def set_my_pixels_id(payload):
     with open('colors.json') as json_data:
@@ -36,12 +37,15 @@ def set_my_pixels_id(payload):
     unicorn.show()
     
 def on_file(*args):
-    if args[0]["Type"] == "Static":
-        set_my_pixels(args[0]["Payload"])
-    elif args[0]["Type"] == "StaticId":
-        set_my_pixels_id(args[0]["Payload"])
-    else:
-        print "Unknown Type"
+    try:
+        if args[0]["Type"] == "Static":
+            set_my_pixels(args[0]["Payload"])
+        elif args[0]["Type"] == "StaticId":
+            set_my_pixels_id(args[0]["Payload"])
+        else:
+            print "Unknown Type"
+    except:
+        print "Data Error"
     
 def start():
     with open('start.json') as json_data:
