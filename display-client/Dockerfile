@@ -1,4 +1,4 @@
-FROM actuino/python2-unicorn-armhf:1
+FROM actuino/python2-unicorn-armhf:2
 WORKDIR /root/
 
 ENV UNICORN_CLIENT_NAME "Display1"
