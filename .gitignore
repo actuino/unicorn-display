@@ -1,1 +1,8 @@
 .store
+display-client/doc
+display-client/channels/*.json
+display-client/local/status
+display-client/local/binary_clock
+*.pyc
+core
+priv
