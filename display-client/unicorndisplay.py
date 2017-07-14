@@ -50,7 +50,8 @@ def init(config_file_name=''):
         pages = data["Pages"]
         total_pages = len(pages)
         print "Unicorn started"
-        print "there is ",total_pages," pages"
+        print "there are",total_pages,"pages"
+        print "Autoscan",data["Autoscan"]
         set_autoscan(data["Autoscan"])
         
 
