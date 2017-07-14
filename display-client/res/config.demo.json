@@ -1,0 +1,12 @@
+{"Name": "Astra",
+"Autoscan":30,
+"Pages": [
+    ["Filante","Local","1"],
+    ["Rainbow","Local","0.02"],
+    ["Pixels_poster","Local","1"],
+	["binary-clock","Local","1"],
+	["Snake","Local","1"],
+	["Alea","Local","0.5"]
+]
+	
+}

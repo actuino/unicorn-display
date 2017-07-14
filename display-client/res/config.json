@@ -1,0 +1,15 @@
+{"Name": "Astra",
+"Autoscan":0,
+"Pages": [
+    ["Filante","Local","1"],
+    ["Rainbow","Local","0.02"],
+    ["Pixels_poster","Local","1"],
+	["Cam","","Scintille"],
+    ["Radar","Radar",""],
+	["Status","",""],
+	["Unknown","",""],
+	["Pixel","p","Estompe"],
+	["binary-clock","Local","1"],
+	["Minecraft","",""],
+	["Editor","",""]]
+}
